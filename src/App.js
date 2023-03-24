@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+// import Speedtyping2 from "../src/speedTyping/Speedtyping2";
+// import Useeffect1 from "./useEffect/Useeffect1";
+// import Speedtyping1 from "../src/speedTyping/Speedtyping1";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./NewProject/PrivateRoute/PrivateRoute";
+import Home from "./NewProject/AfterLogin/Home";
+import Products from "./NewProject/AfterLogin/Products";
+import Login from "./NewProject/LoginPage/Login";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Speedtyping1 /> */}
+      {/* <Speedtyping2 /> */}
+      {/* <Useeffect1 /> */}
+
+      <Router>
+        <Routes>
+          <Route element={<PrivateRoute />}>
+            <Route element={<Home />} path="/" exact />
+            <Route element={<Products />} path="/products" />
+          </Route>
+          <Route element={<Login />} path="/login" />
+        </Routes>
+      </Router>
     </div>
   );
 }
